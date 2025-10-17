@@ -22,6 +22,18 @@ function App() {
         alert(`Player ${theGrid[0 + offset]} wins!`)
       }
     }
+    // check for vertical winner
+    for (let offset = 0; offset <= 2; offset ++) {
+      if (theGrid[0 + offset] != EMPTY && theGrid[0 + offset] == theGrid[3 + offset] && theGrid[3 + offset] == theGrid[6 + offset]) {
+        alert(`Player ${theGrid[0 + offset]} wins!`)
+      }
+    }
+    // check for diagonal winner
+    for (let offset = 0; offset <= 2; offset += 2) {
+      if (theGrid[0 + offset] != EMPTY && theGrid[0 + offset] == theGrid[4 + offset] && theGrid[4 + offset] == theGrid[8 - offset]) {
+        alert(`Player ${theGrid[0 + offset]} wins!`)
+      }
+    }
   }
 
   const handleTurn = (pos) => {
