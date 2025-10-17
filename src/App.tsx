@@ -42,7 +42,7 @@ function App() {
   }
 
   const checkSquash = (theGrid) => {
-    return !theGrid.includes(EMPTY) && !board.winner
+    return !theGrid.includes(EMPTY) && checkWinner(theGrid) == false
   }
 
   const handleTurn = (pos) => {
@@ -86,8 +86,8 @@ function App() {
       </div>
       {/* end grid box */}
       <p className="text-xl">Player {board.player == CROSS ? "X's" : "O's"} Turn</p>
-      {board.winner && <Winner rstGame={resetGame} sqState={board.squash}/>}
-      {board.squash && <Winner rstGame={resetGame} sqState={board.squash}/>}
+      {board.winner && <Winner rstGame={resetGame} sqState={board.squash} />}
+      {board.squash && !board.winner && <Winner rstGame={resetGame} sqState={board.squash} />}
     </div>
   )
 }
