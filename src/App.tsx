@@ -15,6 +15,15 @@ function App() {
     ]
   })
 
+  const checkWinner = (theGrid) => {
+    // check for horizontal winner
+    for (let offset = 0; offset <= 6; offset += 3) {
+      if (theGrid[0 + offset] != EMPTY && theGrid[0 + offset] == theGrid[1 + offset] && theGrid[1 + offset] == theGrid[2 + offset]) {
+        alert(`Player ${theGrid[0 + offset]} wins!`)
+      }
+    }
+  }
+
   const handleTurn = (pos) => {
     const allBoardPositions = [...board.position]
     allBoardPositions[pos] = board.player
@@ -22,6 +31,7 @@ function App() {
       player: board.player == CROSS ? CIRCLE : CROSS,
       position: allBoardPositions
     })
+    checkWinner(allBoardPositions)
   }
 
   return (
